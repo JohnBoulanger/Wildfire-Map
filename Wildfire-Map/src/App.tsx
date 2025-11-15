@@ -1,11 +1,12 @@
 import './App.css'
 import Map from './components/Map'
+import { MapProvider } from './context/MapContext'
 
 function App() {
   return (
-    <>
+    <MapProvider>
       <Map />
-    </>
+    </MapProvider>
   )
 }
 
