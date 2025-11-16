@@ -1,6 +1,8 @@
 @import "tailwindcss";
 
-html, body, #root {
+html,
+body,
+#root {
   height: 100%;
   margin: 0;
   padding: 0;
@@ -9,19 +11,18 @@ html, body, #root {
 
 @layer components {
   .map-toolbar-btn {
-    @apply p-1 rounded-md
-           hover:bg-gray-200 hover:text-black hover:shadow-md;
+    @apply p-1 rounded-md hover:bg-gray-200 hover:text-black hover:shadow-md;
   }
 
   .map-toolbar-tooltip {
-    @apply absolute right-full top-1/2 -translate-y-1/2 mr-4
-           px-2 py-1 rounded bg-black text-white text-xs shadow
-           opacity-0 group-hover:opacity-100
-           pointer-events-none whitespace-nowrap
-           transition
+    @apply absolute right-full top-1/2 -translate-y-1/2 mr-4 px-2 py-1 rounded bg-black text-white text-xs shadow opacity-0 group-hover:opacity-100 pointer-events-none whitespace-nowrap transition;
+  }
+
+  .map-style-dropdown-item {
+    @apply w-full text-left px-3 py-2 rounded-md hover:bg-gray-100 transition;
   }
 }
 
-.mapboxgl-marker {
-  z-index: 9999 !important;
+.mapboxgl-ctrl-geolocate {
+  display: none;
 }

@@ -1,22 +1,22 @@
-import GpsFixedRoundedIcon from '@mui/icons-material/GpsFixedRounded';
-import { useMap } from '../../context/MapContext';
-
+import GpsFixedRoundedIcon from "@mui/icons-material/GpsFixedRounded";
+import { useMap } from "../../context/MapContext";
 
 function MyLocationButton() {
+  const { geolocate } = useMap();
 
-    const { geolocate } = useMap();
+  return (
+    <div className="relative group">
+      <button
+        type="button"
+        onClick={() => geolocate.current?.trigger()}
+        className="map-toolbar-btn"
+      >
+        <GpsFixedRoundedIcon fontSize="large" />
+      </button>
 
-    return (
-        <div className="relative group">
-            <button onClick={() => geolocate.current?.trigger()} className="map-toolbar-btn">
-                <GpsFixedRoundedIcon fontSize="large" />
-            </button>
-
-            <div className="map-toolbar-tooltip">
-                Show Current Location
-            </div>
-        </div>
-    );
+      <div className="map-toolbar-tooltip">Show Current Location</div>
+    </div>
+  );
 }
 
 export default MyLocationButton;

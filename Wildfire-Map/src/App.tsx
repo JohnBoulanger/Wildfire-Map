@@ -1,13 +1,13 @@
-import './App.css'
-import Map from './components/Map'
-import { MapProvider } from './context/MapContext'
+import "./App.css";
+import MapView from "./components/MapView";
+import { MapProvider } from "./context/MapContext";
 
 function App() {
   return (
     <MapProvider>
-      <Map />
+      <MapView />
     </MapProvider>
-  )
+  );
 }
 
-export default App
+export default App;
