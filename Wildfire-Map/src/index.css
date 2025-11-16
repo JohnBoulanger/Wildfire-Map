@@ -23,6 +23,6 @@ body,
   }
 }
 
-.mapboxgl-ctrl-geolocate {
+.mapboxgl-ctrl .mapboxgl-ctrl-geolocate {
   display: none;
 }

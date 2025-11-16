@@ -1,8 +1,9 @@
 import MapRoundedIcon from "@mui/icons-material/MapRounded";
 import { useMap } from "../../context/MapContext";
 import MapStyleDropdown from "../MapStyleDropdown";
+import { useState } from "react";
 
-const styles = [
+const styleOptions = [
   {
     label: "Default",
     style: "mapbox://styles/johnboulanger/cmi0mloo9008g01s4bvqj2kh6",
@@ -15,6 +16,7 @@ const styles = [
 
 function MapStyleButton() {
   const { map } = useMap();
+  const [activeStyle, setActiveStyle] = useState(styleOptions[0].style);
 
   return (
     <div className="relative group">
@@ -27,16 +29,24 @@ function MapStyleButton() {
         align="right"
       >
         <div>
-          {styles.map((style) => (
-            <button
-              type="button"
-              className="map-style-dropdown-item"
-              onClick={() => map.current?.setStyle(style.style)}
-              key={style.label}
-            >
-              {style.label}
-            </button>
-          ))}
+          {styleOptions.map((style) => {
+            const isActive = style.style === activeStyle;
+            return (
+              <button
+                type="button"
+                className={`map-style-dropdown-item ${
+                  isActive ? "bg-gray-200 font-semibold" : ""
+                }`}
+                onClick={() => {
+                  map.current?.setStyle(style.style);
+                  setActiveStyle(style.style);
+                }}
+                key={style.label}
+              >
+                {style.label}
+              </button>
+            );
+          })}
         </div>
       </MapStyleDropdown>
 

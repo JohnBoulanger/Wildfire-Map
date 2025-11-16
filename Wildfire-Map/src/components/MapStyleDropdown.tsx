@@ -26,18 +26,14 @@ function MapStyleDropdown({
 
   return (
     <div className="relative" ref={ref}>
-      <button
-        type="button"
-        onClick={() => setOpen(!open)}
-        className="contents"
-        >
+      <button type="button" onClick={() => setOpen(!open)} className="contents">
         {button}
-    </button>
+      </button>
 
       {open && (
         <div
-          className={`absolute mt-2 w-48 rounded-lg bg-white border shadow-lg p-2 z-50 ${
-            align === "right" ? "right-0" : "left-0"
+          className={`absolute mt-2 w-48 rounded-lg bg-white border shadow-lg p-2 z-3 ${
+            align === "right" ? "right-14" : "left-0"
           }`}
         >
           {children}
