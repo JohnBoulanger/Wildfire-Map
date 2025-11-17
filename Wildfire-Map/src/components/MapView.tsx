@@ -1,10 +1,12 @@
 import { useEffect, useRef, useState } from "react";
 import mapboxgl from "mapbox-gl";
 import MapToolbar from "./MapToolbar";
-import { useMap } from "../context/MapContext";
 import { wildfireMarkers, type FireData } from "../constants/wildfireConstants";
 import FireMarker from "./FireMarker";
 import FireInfoPanel from "./FireInfoPanel";
+import { useMap } from "../context/useMap";
+import MapLegend from "./MapLegend";
+import { useMapUI } from "../context/useMapUI";
 
 mapboxgl.accessToken = import.meta.env.VITE_MAPBOX_TOKEN;
 
@@ -13,6 +15,9 @@ function MapView() {
   const [activeMarker, setActiveMarker] = useState<FireData | null>();
   const mapContainerRef = useRef<HTMLDivElement | null>(null);
   const { map, geolocate } = useMap();
+  const { ui } = useMapUI();
+
+  const legendOpen = ui.legendOpen;
 
   // setup the map
   // biome-ignore lint/correctness/useExhaustiveDependencies: Mapbox map should initialize only once
@@ -44,23 +49,34 @@ function MapView() {
 
   const handleMarkerClick = (marker: FireData) => {
     setActiveMarker(marker);
-  }
+  };
 
   return (
     <div className="relative w-screen h-screen">
       <div className="w-full h-full" ref={mapContainerRef} />
-      {mapLoaded && wildfireMarkers && wildfireMarkers.map((marker) => {
-        return (
-          <FireMarker 
-            marker={marker}
-            isActive={activeMarker?.id === marker.id}
-            onClick={() => handleMarkerClick(marker)}
-          />
-        );
-      })}
+      {mapLoaded &&
+        wildfireMarkers &&
+        wildfireMarkers.map((marker) => {
+          return (
+            <FireMarker
+              key={marker.id}
+              marker={marker}
+              isActive={activeMarker?.id === marker.id}
+              onClick={() => handleMarkerClick(marker)}
+            />
+          );
+        })}
+      {/* display fire info */}
       {activeMarker && (
-        <FireInfoPanel marker={activeMarker} onClose={() => setActiveMarker(null)}/>
+        <FireInfoPanel
+          marker={activeMarker}
+          onClose={() => setActiveMarker(null)}
+        />
       )}
+
+      {/* display map legend */}
+      {legendOpen && <MapLegend />}
+
       <MapToolbar />
     </div>
   );

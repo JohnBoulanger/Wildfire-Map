@@ -1,7 +1,7 @@
 import MapRoundedIcon from "@mui/icons-material/MapRounded";
-import { useMap } from "../../context/MapContext";
 import MapStyleDropdown from "../MapStyleDropdown";
 import { useState } from "react";
+import { useMap } from "../../context/useMap";
 
 const styleOptions = [
   {

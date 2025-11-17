@@ -1,5 +1,5 @@
 import GpsFixedRoundedIcon from "@mui/icons-material/GpsFixedRounded";
-import { useMap } from "../../context/MapContext";
+import { useMap } from "../../context/useMap";
 
 function MyLocationButton() {
   const { geolocate } = useMap();
