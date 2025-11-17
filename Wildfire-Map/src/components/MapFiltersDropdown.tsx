@@ -6,7 +6,7 @@ interface DropdownProps {
   align: "left" | "right";
 }
 
-function MapLayersDropdown({
+function MapFiltersDropdown({
   button,
   children,
   align = "right",
@@ -43,4 +43,4 @@ function MapLayersDropdown({
   );
 }
 
-export default MapLayersDropdown;
+export default MapFiltersDropdown;

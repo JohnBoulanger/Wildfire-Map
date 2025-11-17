@@ -1,21 +1,20 @@
-import LayersRoundedIcon from "@mui/icons-material/LayersRounded";
-import { useState } from "react";
-import MapLayersDropdown from "../MapLayersDropdown";
+import FilterAltRoundedIcon from '@mui/icons-material/FilterAltRounded';import { useState } from "react";
 import SeverityFilter from "../filters/SeverityFilter";
 import LocationFilter from "../filters/LocationFilter";
 import DateFilter from "../filters/DateFilter";
+import MapFiltersDropdown from '../MapFiltersDropdown';
 
 const tabs = ["Severity", "Location", "Date"] as const;
 
-function MapLayersButton() {
+function MapFiltersButton() {
   const [activeTab, setActiveTab] = useState("Severity");
 
   return (
     <div className="relative group">
-      <MapLayersDropdown
+      <MapFiltersDropdown
         button={
           <button type="button" className="map-toolbar-btn">
-            <LayersRoundedIcon fontSize="large" />
+            <FilterAltRoundedIcon fontSize="large" />
           </button>
         }
         align="right"
@@ -44,11 +43,11 @@ function MapLayersButton() {
             <div></div>
           </div>
         </div>
-      </MapLayersDropdown>
+      </MapFiltersDropdown>
 
-      <div className="map-toolbar-tooltip">Edit Map Layers</div>
+      <div className="map-toolbar-tooltip">Edit Map Filters</div>
     </div>
   );
 }
 
-export default MapLayersButton;
+export default MapFiltersButton;
