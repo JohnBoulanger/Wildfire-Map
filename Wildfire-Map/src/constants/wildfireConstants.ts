@@ -15,13 +15,6 @@ export interface FireData {
 }
 
 export const wildfireMarkers: FireData[] = [
-  // Montclair, California
-  { id: "1",  severity: FireSeverity.Rank2, lat: 34.0775, lon: -117.6898 },
-  { id: "2",  severity: FireSeverity.Rank4, lat: 34.0801, lon: -117.6983 },
-  { id: "3",  severity: FireSeverity.Rank1, lat: 34.0754, lon: -117.6841 },
-  { id: "4",  severity: FireSeverity.Rank3, lat: 34.0832, lon: -117.6930 },
-  { id: "5",  severity: FireSeverity.Rank5, lat: 34.0719, lon: -117.7025 },
-
   // Banff, Alberta
   { id: "6",  severity: FireSeverity.Rank1, lat: 51.1784, lon: -115.5708 },
   { id: "7",  severity: FireSeverity.Rank4, lat: 51.1851, lon: -115.5614 },
